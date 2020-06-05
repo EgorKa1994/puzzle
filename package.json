@@ -1,0 +1,12 @@
+{
+  "name": "puzzle",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "parcel index.html --open"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

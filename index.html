@@ -1,0 +1,52 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>9ка</title>
+	<link rel="stylesheet" href="./src/css/reset.css">
+	<link rel="stylesheet" href="./src/css/style.css">
+	<script src="./src/js/app.js" defer></script>
+</head>
+
+<body>
+	<div class="message invisible">
+		<h2 class="message__result"></h2>
+		<button class="approve">OK</button>
+	</div>
+	<div class="container">
+		<h1>Игра в 9</h1>
+		<div class='result'>
+			<div>
+				<h2 class="result__best_name">Лучший результат:</h2>
+				<div class='result__best'>
+					<div>По времени: <span id='besttime'></span></div>
+					<div>По ходам: <span id='bestquantity'></span></div>
+				</div>
+			</div>
+			<div class='result__quantity'>
+				<h2 class='result__quantity_value'>Кол-во ходов: 0</h2>
+			</div>
+			<div class='result__time'>
+				<h2 class='result__quantity_time'>Время:</h2>
+				<p id='timer'>00. 00. 00</p>
+			</div>
+			<button id="res" class="invisible">Начать заново</button>
+		</div>
+		<div class="fifteen-wrap">
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+		</div>
+
+	</div>
+</body>
+
+</html>
