@@ -6,7 +6,7 @@ body {
 	color: white;
 	font-style: italic;
 	text-shadow: 4px 4px 2px black;
-	cursor:default;
+	cursor: default;
 }
 
 .container {
@@ -53,11 +53,11 @@ h1, p {
 
 .result {
 	width: 39%;
-	margin-right:1%;
+	margin-right: 1%;
 }
 
 .result > div:first-child {
-	padding:2px;
+	padding: 2px;
 	margin-bottom: 20px;
 }
 
@@ -91,27 +91,27 @@ h2, p {
 
 button {
 	cursor: pointer;
-	font-size:25px;
+	font-size: 25px;
 	text-decoration: none;
-	padding:7px 44px;
-	color:#363a3d;
-	background-color:#ffffff;
-	border-radius:29px;
+	padding: 7px 44px;
+	color: #363a3d;
+	background-color: #ffffff;
+	border-radius: 29px;
 	border: 4px solid #171818;
 	font-weight: bold;
 	margin: 20px auto;
 }
 
 button:hover {
-	background-color:#8d9499;color:#ffffff;
+	background-color: #8d9499;color:#ffffff;
 }
 
 .approve {
 	width: 300px;
-	padding:10px 0;
+	padding: 10px 0;
 }
 
-@media (min-width: 481px) and (max-width:800px) {
+@media (min-width: 481px) and (max-width: 800px) {
 
 	.fifteen-wrap {
 		width: 50%;
@@ -154,7 +154,7 @@ button:hover {
 
 	button {
 		position: absolute;
-		font-size:1.3em;
+		font-size: 1.3em;
 		width: 250px;
 		bottom: -110px;
 	}
@@ -171,7 +171,7 @@ button:hover {
 
 }
 
-@media (max-width:480px) {
+@media (max-width: 480px) {
 	h1 {
 		font-size: 3em;
 		margin-bottom: 5px;
@@ -212,9 +212,9 @@ button:hover {
 		width: 60%;
 		bottom: -60px;
 		left: 20%;
-		margin-left:-25%;
-		font-size:1.2em;
-		padding:5px 10px;
+		margin-left: -25%;
+		font-size: 1.2em;
+		padding: 5px 10px;
 		margin: 10px auto;
 	}
 
