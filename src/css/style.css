@@ -1,4 +1,4 @@
-body{
+body {
 	background-image: url(../img/background7.jpg);
 	background-repeat: y-repeat;
 	background-size: 100%;
@@ -9,7 +9,7 @@ body{
 	cursor:default;
 }
 
-.container{
+.container {
 	max-width: 960px;
 	margin: 0 auto;
 	display: flex;
@@ -18,7 +18,7 @@ body{
 	justify-content: center;
 }
 
-.fifteen-wrap{
+.fifteen-wrap {
 	display: flex;
 	flex-wrap: wrap;
 	width: 50%;
@@ -27,7 +27,7 @@ body{
 	border: 3px solid white;
 }
 
-.fifteen-wrap div{
+.fifteen-wrap div {
 	border: 1px solid white;
 	width: 33%;
 	height: 159px;
@@ -39,11 +39,11 @@ body{
 	cursor: default;
 }
 
-.fifteen-wrap div:last-child,.fifteen-wrap div:nth-child(3),.fifteen-wrap div:nth-child(6){
+.fifteen-wrap div:last-child,.fifteen-wrap div:nth-child(3),.fifteen-wrap div:nth-child(6) {
 	width: 34%;
 }
 
-h1, p{
+h1, p {
 	width: 100%;
 	text-align: center;
 	font-size: 5em;
@@ -51,17 +51,17 @@ h1, p{
 	text-shadow: 4px 4px 2px black;
 }
 
-.result{
+.result {
 	width: 39%;
 	margin-right:1%;
 }
 
-.result > div:first-child{
+.result > div:first-child {
 	padding:2px;
 	margin-bottom: 20px;
 }
 
-.result__best{
+.result__best {
 	font-size: 2em;
 }
 
@@ -72,14 +72,14 @@ h2, p {
 	font-style: italic;
 	margin: 0 0 10px 0;
 	text-shadow: 4px 4px 2px black;
-	
+
 }
 
-.invisible{
+.invisible {
 	display: none;
 }
 
-.message{
+.message {
 	margin: 0 auto;
 	font-size: 2em;
 	color: white;
@@ -89,36 +89,36 @@ h2, p {
 	text-align: center;
 }
 
-button{
-	cursor: pointer; 
-	font-size:25px;  
-	text-decoration: none; 
-	padding:7px 44px; 
-	color:#363a3d; 
-	background-color:#ffffff; 
-	border-radius:29px; 
+button {
+	cursor: pointer;
+	font-size:25px;
+	text-decoration: none;
+	padding:7px 44px;
+	color:#363a3d;
+	background-color:#ffffff;
+	border-radius:29px;
 	border: 4px solid #171818;
 	font-weight: bold;
 	margin: 20px auto;
 }
 
-button:hover{
+button:hover {
 	background-color:#8d9499;color:#ffffff;
 }
 
-.approve{
+.approve {
 	width: 300px;
 	padding:10px 0;
 }
 
 @media (min-width: 481px) and (max-width:800px) {
-	
-	.fifteen-wrap{
+
+	.fifteen-wrap {
 		width: 50%;
 		height: 330px;
 	}
 
-	.fifteen-wrap div{
+	.fifteen-wrap div {
 		border: 1px solid white;
 		width: 33%;
 		height: 109px;
@@ -126,7 +126,7 @@ button:hover{
 		padding-top: 11%;
 	}
 
-	.container{
+	.container {
 		align-items: flex-start;
 	}
 
@@ -136,35 +136,35 @@ button:hover{
 		font-style: italic;
 		margin: 0 0 10px 0;
 		text-shadow: 4px 4px 2px black;
-		
+
 	}
 
-	.result__best{
+	.result__best {
 		font-size: 1.5em;
 	}
 
-	span{
+	span {
 		display: block;
 		padding: 5px 0;
 	}
 
-	.result{
+	.result {
 		position: relative;
 	}
 
-	button{
+	button {
 		position: absolute;
-		font-size:1.3em;  
+		font-size:1.3em;
 		width: 250px;
 		bottom: -110px;
 	}
 
-	.message{
+	.message {
 		margin-top: 200px;
 		font-size: 1.5em;
 	}
 
-	.approve{
+	.approve {
 		position: static;
 		width: 300px;
 	}
@@ -172,58 +172,58 @@ button:hover{
 }
 
 @media (max-width:480px) {
-	h1{
-		font-size: 3em;	
+	h1 {
+		font-size: 3em;
 		margin-bottom: 5px;
 	}
 
-	h2, p{
+	h2, p {
 		font-size: 1.5em;
 		text-align: center;
 		width: 100%;
 		margin: 0 0 5px 0;
 	}
 
-	.fifteen-wrap div{
+	.fifteen-wrap div {
 		width: 33%;
 		height: 100px;
-		padding-top: 9%; 
+		padding-top: 9%;
 		font-size: 2em;
 	}
 
 
-	.fifteen-wrap{
+	.fifteen-wrap {
 		width: 306px;
 		height: 306px;
 		margin-top: 70px;
 	}
 
-	.result{
+	.result {
 		position: relative;
 		width: 100%;
 	}
 
-	.result__best{
+	.result__best {
 		text-align: center;
 	}
 
-	button{
+	button {
 		position: absolute;
 		width: 60%;
 		bottom: -60px;
 		left: 20%;
 		margin-left:-25%;
-		font-size:1.2em;  
-		padding:5px 10px; 
+		font-size:1.2em;
+		padding:5px 10px;
 		margin: 10px auto;
 	}
 
-	.message{
+	.message {
 		margin-top: 200px;
 		font-size: 1.5em;
 	}
 
-	.approve{
+	.approve {
 		position: static;
 		width: 200px;
 	}

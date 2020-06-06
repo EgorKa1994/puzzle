@@ -126,6 +126,7 @@ export default class Game {
       }
       return this._getSumOfWrongСellPosition(mixedArray, sum, ++a);
     }
+
     return sum;
   }
 
