@@ -1,4 +1,4 @@
-﻿export default class Game {
+export default class Game {
   constructor() {
     this.gameArea = document.querySelector('.fifteen-wrap');
     this.container = document.querySelector('.container');
@@ -16,9 +16,9 @@
 
     this.gameData = []; // массив объектов (исходные данные)
 
-    //для таймера
-    this.startDate;
-    this.clocktimer;
+    // для таймера
+    this.primaryDate;
+    this.timer;
     this.switch = false;
 
     this._init();
@@ -28,22 +28,22 @@
     // клик на игровом поле
     this.gameArea.addEventListener(
       'click',
-      this._listenClickonGameArea.bind(this)
+      this._handleClickOnGameArea.bind(this)
     );
     // клик при победе в игре
-    this.btn.addEventListener('click', this._listenClickonGameWin.bind(this));
+    this.btn.addEventListener('click', this._handleClickOnGameWin.bind(this));
     // клик на рестарт
     this.restartGame.addEventListener(
       'click',
-      this._listenClickonRestart.bind(this)
+      this._handleClickOnRestart.bind(this)
     );
   }
 
-  //СОБЫТИЯ******************************
+  // события----------------------------------------
 
-  _listenClickonGameArea(e) {
+  _handleClickOnGameArea(e) {
     this.restartGame.classList.remove('invisible');
-    let idOfCell = e.target.getAttribute('id');
+    const idOfCell = e.target.getAttribute('id');
     let idOfEmptyCell;
     this.gameData.forEach((item) => {
       if (item.content == ' ') {
@@ -70,40 +70,44 @@
 
     if (!this.switch) {
       this.switch = true;
-      this._findTIME();
+      this._getPrimaryTime();
     }
   }
 
-  _listenClickonGameWin() {
+  _handleClickOnGameWin() {
     this._showWinMessage();
     this.restart([1, 2, 3, 4, 5, 6, 7, 8]);
   }
 
-  _listenClickonRestart() {
+  _handleClickOnRestart() {
     this.restart([1, 2, 3, 4, 5, 6, 7, 8]);
   }
 
-  //КОНЕЦ СОБЫТИЙ*****************************************************
+  // конец событий-------------------------------------
 
   // получение начального расположения ячеек + разметка
   _getInitialGamePosition(primaryArray) {
-    // Перемешивание данных в начальном массиве
-    for (let i = primaryArray.length - 1; i > 0; i--) {
-      let j = Math.floor(Math.random() * (i + 1));
-      [primaryArray[i], primaryArray[j]] = [primaryArray[j], primaryArray[i]];
-    }
-    // Нахождение кол-ва неверно расположенных ячеек
-    // Только при четном кол-ве таких расположений пазл может быть сложен!
-    let sumOfWrongCases = this._getSumOfWrongСellPosition(primaryArray);
+    // перемешивание данных в начальном массиве
+    primaryArray.forEach((item, index) => {
+      const j = Math.floor(Math.random() * (index + 1));
+      [primaryArray[index], primaryArray[j]] = [
+        primaryArray[j],
+        primaryArray[index],
+      ];
+    });
+
+    // нахождение кол-ва неверно расположенных ячеек
+    // только при четном кол-ве таких расположений пазл может быть сложен!
+    const sumOfWrongCases = this._getSumOfWrongСellPosition(primaryArray);
 
     if (!(sumOfWrongCases % 2)) {
       primaryArray.push(' ');
-      for (let i = 0; i < this.elements.length; i++) {
+      this.elements.forEach((item, index) => {
         this.gameData.push({
-          id: i,
-          content: primaryArray[i],
+          id: index,
+          content: primaryArray[index],
         });
-      }
+      });
       this._currentPositionMarkUp(this.gameData);
     } else {
       return this._getInitialGamePosition([1, 2, 3, 4, 5, 6, 7, 8]);
@@ -112,7 +116,7 @@
 
   // получение кол-ва "неправильно расположенных ячеек в игровом поле" для проверки возможности решения пазла
   _getSumOfWrongСellPosition(mixedArray, sum = 0, a = 0) {
-    let arrLength = mixedArray.length;
+    const arrLength = mixedArray.length;
 
     if (a < arrLength - 1) {
       for (let i = a; i < arrLength; i++) {
@@ -121,9 +125,8 @@
         }
       }
       return this._getSumOfWrongСellPosition(mixedArray, sum, ++a);
-    } else {
-      return sum;
     }
+    return sum;
   }
 
   // Разметка текущей игровой позиции
@@ -137,12 +140,10 @@
 
   // проверка на завершение игры
   _checkCurrentGamePosition(currentGameData) {
-    let sampleData = '12345678 ';
-    let currentData = currentGameData.map((item) => {
-      return item.content;
-    });
+    const sampleData = '12345678 ';
+    const currentData = currentGameData.map((item) => item.content);
     if (sampleData == currentData.join('')) {
-      let timeFinalResult = this.gameTimer.innerHTML;
+      const timeFinalResult = this.gameTimer.innerHTML;
 
       this.finalResult.innerHTML = `Ваш результат: ${this.counter} хода(-ов), время - ${timeFinalResult}`;
 
@@ -156,14 +157,15 @@
     this.winMessage.classList.toggle('invisible');
     this.container.classList.toggle('invisible');
   }
+
   // рестарт игры
   restart(primaryArray) {
     this.restartGame.classList.add('invisible');
     this.gameData = [];
     this.counter = 0;
-    clearTimeout(this.clocktimer);
+    clearTimeout(this.timer);
     this.switch = false;
-    this.gameTimer.innerHTML = `00. 00. 00`;
+    this.gameTimer.innerHTML = '00. 00. 00';
     this._markUpBestSavedResult();
     this._getInitialGamePosition(primaryArray);
   }
@@ -191,26 +193,26 @@
 
   // таймер
 
-  _findTIME() {
-    this.startDate = new Date(); // начальная точка отсчета
-    this._startTIME();
+  _getPrimaryTime() {
+    this.primaryDate = new Date(); // начальная точка отсчета
+    this._getCurrentTime();
   }
 
-  _startTIME() {
-    let thisDate = new Date(); // текущее время
-    let t = thisDate.getTime() - this.startDate.getTime();
-    let ms = t % 1000;
-    t -= ms;
-    ms = Math.floor(ms / 10);
-    t = Math.floor(t / 1000);
-    let s = t % 60;
-    t -= s;
-    t = Math.floor(t / 60);
-    let m = t % 60;
-    if (m < 10) m = '0' + m;
-    if (s < 10) s = '0' + s;
-    if (ms < 10) ms = '0' + ms;
-    this.gameTimer.innerHTML = `${m}. ${s}. ${ms}`;
-    this.clocktimer = setTimeout(this._startTIME.bind(this), 10);
+  _getCurrentTime() {
+    const currentDate = new Date(); // текущее время
+    let deltaTime = currentDate.getTime() - this.primaryDate.getTime();
+    let milliseconds = deltaTime % 1000;
+    deltaTime -= milliseconds;
+    milliseconds = Math.floor(milliseconds / 10);
+    deltaTime = Math.floor(deltaTime / 1000);
+    let seconds = deltaTime % 60;
+    deltaTime -= seconds;
+    deltaTime = Math.floor(deltaTime / 60);
+    let minutes = deltaTime % 60;
+    if (minutes < 10) minutes = `0${minutes}`;
+    if (seconds < 10) seconds = `0${seconds}`;
+    if (milliseconds < 10) milliseconds = `0${milliseconds}`;
+    this.gameTimer.innerHTML = `${minutes}. ${seconds}. ${milliseconds}`;
+    this.timer = setTimeout(this._getCurrentTime.bind(this), 10);
   }
 }
